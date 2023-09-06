@@ -6,9 +6,9 @@ def main():
     x = 0 
     for i in range(int(lists[0][0])+1):
         q.append((lists[i].split()))
-    print(q)
+    
     for e in range(len(q)-1):
-        width = int(q[0][1]) - int(q[e][2]) - int(q[e][3])
+        width = int(q[0][1]) - int(q[e][2]) - int(q[e][-1])
         height = int(q[0][2]) - int(q[e][0]) - int(q[e][1])
         area = width * height
         v.append(area)
@@ -18,6 +18,6 @@ def main():
     
     
     
-
+# if __name__ == "__main__":
 main()
 

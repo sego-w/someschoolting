@@ -14,7 +14,7 @@ def main():
         v.append(area)
     for number in v:
         x += int(number)
-    print(f"Vaipade kogu pindala on {x} yhikut!")
+    print(f"Vaipade kogu pindala on {x} yhikut")
     
     
     

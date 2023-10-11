@@ -15,9 +15,25 @@ def main():
         print("MIINUSES")
     elif w==0:
         print("TASA")
-    else:
+    elif w>0:
         print("PLUSSIS")
+    else:
+        print("EI TEA")
     
+    win = []
+    loss = []
+    for q in z:
+        if int(q[1]) - int(q[0]) < 0:
+            loss.append(int(q[0]) - int(q[1]))
+        else: 
+            win.append(int(q[0]) - int(q[1]))
+
+    
+    
+    print(max(loss), loss.index(max(loss))+1)
+
+
+
     
 
 main()

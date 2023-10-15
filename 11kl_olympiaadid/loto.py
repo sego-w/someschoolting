@@ -26,7 +26,7 @@ def main():
         if int(q[1]) - int(q[0]) < 0:
             loss.append(int(q[0]) - int(q[1]))
         else: 
-            win.append(int(q[0]) - int(q[1]))
+            win.append(int(q[0]) - int(q[]))
 
     
     

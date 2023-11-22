@@ -3,9 +3,11 @@ import heapq
 def main():
 
     n, m = map(int,input().split())
-    tipu_naabrid = [[] for _ in range(n)]
+    tipu_naabrid = [{} for _ in range(n)]
     for _ in range(m):
         a, b, w = map(int, input().split())
+        a -= 1
+        b -= 1
         if b in tipu_naabrid[a]:
             w = min(w,tipu_naabrid[a][b])
         tipu_naabrid[a][b] = w
@@ -22,16 +24,16 @@ def main():
     tipp_parim = {}
 
     while len(jarjekord) > 0:
-        kaal, tipp, eellane = heapq.heappop(jarjekord)
+        kaal, tipp  = heapq.heappop(jarjekord)
         if tipp in nahtud:
             continue
-        
+        if tipp == n-1:
+            break
         
 
         nahtud.add(tipp)  
-        eellased[tipp] = eellane
-        if tipp == n-1:
-            break
+        
+        
 
         for naaber,servakaal in tipu_naabrid[tipp].items():
             uus_kaal = kaal + servakaal
@@ -50,5 +52,6 @@ def main():
         teekond.reverse()
         for i in range(len(teekond)):
             teekond[i] += 1
-        print(*teekond)
+            print(teekond[i],end=" ")
+        print("")
 main()

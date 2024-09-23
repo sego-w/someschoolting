@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Reacti katsetused</title>
+	<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+	<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="kiht1"></div>	
+  </body>
+  <script type="text/babel">
+     function Leht(){
+	    const [eesnimed, muudaEesnimed]=React.useState(["Madis", "Malle", "Kalle"]);
+        const [otsistr, muudaOtsistr]=React.useState("");
+        let kast1=React.useRef();
+        let otsikast=React.useRef();
+
+        function lisaEesnimi() {
+            console.log('abc')
+            if(kast1.current.value.trim().length>0){
+                muudaEesnimed([...eesnimed, kast1.current.value]);
+                kast1.current.value="";
+            } 
+            
+        }
+        function kuvaEesnimed() { 
+            
+            let eesnimed2=eesnimed.filter((eesnimi) => eesnimi.includes(otsistr));
+            return <ul>{eesnimed2.map((eesnimi, nr) => <li key={nr}>{eesnimi} <span onClick={() => kustuta(nr)}></span></li>)}</ul>;
+        }
+	    return <div>
+
+            <input type="text" value={otsistr} onChange={(k) => (muudaOtsistr(k.target.value))}/>
+            <input type="button" value="otsi" onClick={() => muudaOtsistr(otsikast.current.value)} />
+            {kuvaEesnimed()}
+            <ul>{eesnimed.map(eesnimi =><li>{eesnimi}</li>)}</ul>
+            <input type="text" ref={kast1} />
+            <input type="button" value="Lisa eesnimi" onClick={() => lisaEesnimi()} />
+
+            </div>;
+     }
+     const root= ReactDOM.createRoot(document.getElementById("kiht1"))
+     root.render(<Leht />);
+  </script>
+</html>
